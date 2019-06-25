@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require('http');
 const app = express();
+const bodyParser = require('body-parser');
 
 const server = http.createServer(app);
 const port = process.env.PORT || '3000';
@@ -10,22 +11,29 @@ var io = require('socket.io')(server);
 var messages = [];
 var markers = [];
 
+app.use(bodyParser())
+
 app.get('/', (req, res, next) => {
     res.send("Hello");
 });
 
 app.get('/markers', (req, res) => {
-    res.json(markers).status(200);
+    res.json({ markers: markers });
 })
 
 app.post('/markers', (req,res) => {
-
+    var marker = {
+        longitude = req.body.longitude,
+        latitude = req.body.latitude,
+    }
+    markers.push(marker);
+    res.status(201);
 })
 
 app.get('/messages', (req,res) => {
 
     console.log("Dosao zahtjev");
-    res.send({ messages: messages }).status(200);
+    res.send({ messages: messages });
 })
 
 io.on('connection', function(socket){
