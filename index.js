@@ -18,7 +18,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/markers', (req, res) => {
-    res.json({ markers: markers });
+    res.send({ markers: markers });
 })
 
 app.post('/markers', (req,res) => {
