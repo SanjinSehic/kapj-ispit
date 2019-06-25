@@ -11,7 +11,7 @@ var io = require('socket.io')(server);
 var messages = [];
 var markers = [];
 
-app.use(bodyParser().json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', (req, res, next) => {
