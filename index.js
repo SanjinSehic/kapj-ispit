@@ -9,6 +9,10 @@ app.get('/', (req, res, next) => {
     res.send("Hello");
 });
 
+app.get('/markers', (req, res) => {
+    res.send("Markers");
+})
+
 server.listen(port, () => {
     console.log("Server started!");
 })
