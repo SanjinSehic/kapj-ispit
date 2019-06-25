@@ -11,6 +11,8 @@ var io = require('socket.io')(server);
 var messages = [];
 var markers = [];
 
+app.use(bodyParser.json());
+
 app.get('/', (req, res, next) => {
     res.send("Hello");
 });
