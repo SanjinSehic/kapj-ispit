@@ -23,7 +23,9 @@ app.post('/markers', (req,res) => {
 })
 
 app.get('/messages', (req,res) => {
-    res.json({ messages: messages }).status(200);
+
+    console.log("Dosao zahtjev");
+    res.send({ messages: messages }).status(200);
 })
 
 io.on('connection', function(socket){
