@@ -8,14 +8,14 @@ const port = process.env.PORT || '3000';
 var io = require('socket.io')(http);
 
 var messages = [];
-var markers = ["nesto"];
+var markers = [];
 
 app.get('/', (req, res, next) => {
     res.send("Hello");
 });
 
 app.get('/markers', (req, res) => {
-    res.send(markers).status(200);
+    res.json(markers).status(200);
 })
 
 app.post('/markers', (req,res) => {
@@ -23,7 +23,7 @@ app.post('/markers', (req,res) => {
 })
 
 app.get('/messages', (req,res) => {
-    res.send(messages).status(200);
+    res.json({ messages: messages }).status(200);
 })
 
 io.on('connection', function(socket){
