@@ -11,7 +11,6 @@ var io = require('socket.io')(server);
 var messages = [];
 var markers = [];
 
-
 app.get('/', (req, res, next) => {
     res.send("Hello");
 });
@@ -21,9 +20,12 @@ app.get('/markers', (req, res) => {
 })
 
 app.post('/markers', (req,res) => {
+    let long = req.body.longitude;
+    let lat = req.body.latitude;
+
     var marker = {
-        longitude = req.body.longitude,
-        latitude = req.body.latitude,
+        longitude: long,
+        latitude: lat,
     }
     markers.push(marker);
     res.status(201);
