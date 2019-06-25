@@ -29,6 +29,7 @@ app.post('/markers', (req,res) => {
         longitude: long,
         latitude: lat,
     }
+    console.log(marker)
     markers.push(marker);
     res.status(201);
 })
