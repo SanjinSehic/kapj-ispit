@@ -2,6 +2,7 @@ const express = require("express");
 const http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
+var cors = require('cors');
 
 const server = http.createServer(app);
 const port = process.env.PORT || '3000';
@@ -11,6 +12,7 @@ var io = require('socket.io')(server);
 var messages = [];
 var markers = [];
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res, next) => {
